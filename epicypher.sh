@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 01:38:32"
+#Time-stamp: "2018-04-20 01:43:35"
 
 
 ############################################################
@@ -19,7 +19,7 @@ usage(){
 
 
 # receiving arguments
-while getopts ":i:b:k:m:" opt;
+while getopts ":i:b:k:m:o:" opt;
 do
     case "$opt" in
         i) INPUT_FILE=$OPTARG;;  # input fastq file 
@@ -68,7 +68,7 @@ id=${fname%%.${ext}} # bz2,fastq, fq, fasta, fa, gz
 id=${id%%.fastq} # bz2,fastq, fq, fasta, fa, gz
 dir=${INPUT_FILE%/*}
 work_dir=$OUT_DIR; mkdir -p $work_dir 
-log=${work_dir}/${id}.log
+log=${work_dir}/${fname}.snap.log
 fq=${work_dir}/${id}.fastq
 fa=${work_dir}/${id}.fa; 
 
