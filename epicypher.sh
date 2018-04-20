@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 13:32:53"
+#Time-stamp: "2018-04-20 15:30:33"
 
 
 ############################################################
@@ -149,7 +149,7 @@ while [ $ext != BREAK ]; do
             ;;
         log)
             ## apply mismatch threshold
-            awk -v mm=$MIS_MATCH '(NR>2 && $3-$5<=mm)' $log | awk '{count[$1]++} END {for (word in count) print word, count[word]}'
+            awk -v mm=$MIS_MATCH '(NR>2 && $3-$5<=mm)' $log | awk '{count[$1]++} END {for (word in count) print word,"\t",count[word]}'
             ext=BREAK
             ;;
         BREAK) ;;
