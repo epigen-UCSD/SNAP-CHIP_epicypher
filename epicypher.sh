@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 10:52:57"
+#Time-stamp: "2018-04-20 13:32:53"
 
 
 ############################################################
@@ -56,7 +56,7 @@ done
 
 # set default 
 if [  -z "$KEEP_TMP" ]; then
-    KEEP_TMP="false"
+    KEEP_TMP="true"
 fi
 
 if [  -z "$BARCODE_FILE" ]; then
@@ -97,7 +97,7 @@ while [ $ext != BREAK ]; do
     
     # check which step we should begin with
     if [[ -e $log ]]; then
-        (>&2 echo "[log]log exist"); ext=BREAK;
+        (>&2 echo "[log]log exist"); ext=log;
     elif [[ $(ls -1  ${fa}*.nhr 2>/dev/null|wc -l) -gt 0 ]]; then
         (>&2 echo "[log]db exist"); ext=db;
     elif  [[ $(ls -1  ${INPUT_FILE}*.nhr 2>/dev/null|wc -l) -gt 0 ]]; then
@@ -135,11 +135,21 @@ while [ $ext != BREAK ]; do
             makeblastdb -in $fa -dbtype nucl
             (>&2 echo "($(date)) Finish make db")            
             ;;
-        db) 
-            echo "qseqid sseqid qlen length nident mismatch gapopen qstart qend sstart send evalue bitscore sstrand" > $log 
+        db)
+            
+            TOTAL_READS=$(wc -l $fa|cut -d' ' -f1)
+            TOTAL_READS=$[TOTAL_READS/2]
+            echo "TOTAL_READS $TOTAL_READS" > $log
+            echo "qseqid sseqid qlen length nident mismatch gapopen qstart qend sstart send evalue bitscore sstrand" >> $log
+            
             blastn -db $fa -query $BARCODE_FILE -task "blastn" \
+                   -max_target_seqs $TOTAL_READS -evalue 0.01 \
                    -outfmt "6 qseqid sseqid qlen length nident mismatch gapopen qstart qend sstart send evalue bitscore sstrand" \
                    >> $log
+            ;;
+        log)
+            ## apply mismatch threshold
+            awk -v mm=$MIS_MATCH '(NR>2 && $3-$5<=mm)' $log | awk '{count[$1]++} END {for (word in count) print word, count[word]}'
             ext=BREAK
             ;;
         BREAK) ;;
@@ -148,8 +158,6 @@ while [ $ext != BREAK ]; do
     esac
 done
 
-## apply mismatch threshold 
-awk -v mm=$MIS_MATCH '(NR>1 && $3-$5<=mm)' $log | awk '{count[$1]++} END {for (word in count) print word, count[word]}'
 
 ## rm tmp file
-[[ $KEEP_TMP != "true" && -e $fq ]] && rm $fq ${fa} ${fa}.* 1> /dev/null 2>&1 # check before delele!!
+[[ $KEEP_TMP != "true" && -e $fq ]] && rm -i $fq ${fa} ${fa}.* #1> /dev/null 2>&1 # check before delele!!
