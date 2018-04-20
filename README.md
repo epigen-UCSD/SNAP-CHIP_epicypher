@@ -2,6 +2,7 @@
 ## Usage
 
 ``` shell
+> export PATH=$PATH:/path/to/installed/
 > epicypher.sh 
 
 

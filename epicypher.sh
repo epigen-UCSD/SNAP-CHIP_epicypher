@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 09:23:14"
+#Time-stamp: "2018-04-20 09:42:32"
 
 
 ############################################################
@@ -60,7 +60,7 @@ if [  -z "$KEEP_TMP" ]; then
 fi
 
 if [  -z "$BARCODE_FILE" ]; then
-    BARCODE_FILE="K-MetStat_v1.0.fa"
+    BARCODE_FILE="$(which K-MetStat_v1.0.fa)"
 fi
 
 if [  -z "$MIS_MATCH" ]; then
