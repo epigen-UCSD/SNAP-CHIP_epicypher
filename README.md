@@ -2,11 +2,13 @@
 ## Usage
 
 ``` shell
-> epicypher.sh 
+epicypher.sh 
+```
 
+```
 Usage: epicypher.sh [-i <chr>] [-b <chr>] [-k <true|false>] [-m <int>] [-o <dir>] [-v]
 
-Estimate spike in reads from SNAP-CHIP spikein
+Estimate spike-in reads from SNAP-CHIP spikein
 
 Options:
   [no option],             show this help message and exit
