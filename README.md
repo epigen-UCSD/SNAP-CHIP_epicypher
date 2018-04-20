@@ -2,7 +2,7 @@
 ## Usage
 
 ``` shell
-epicypher.sh 
+$epicypher.sh 
 ```
 
 ```
