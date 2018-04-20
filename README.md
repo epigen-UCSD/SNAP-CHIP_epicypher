@@ -18,7 +18,13 @@ Options:
   -m number of mismatch allowed
   -o output dir
   -v show VERSION         
+```
 
+``` shell
+$epicypher.sh -v
+v0.0-3-g6daa209
 ```
 
 ## 
+
+
