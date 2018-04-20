@@ -7,7 +7,7 @@ for s in  ${samplenames[@]};do
     time  bash epicypher.sh -i ~/data/seqdata/${s}.fastq.bz2 -m 0 \
           -o ~/data/outputs/libQCs/${s}/ \
           1> ~/data/outputs/libQCs/${s}/${s}.fastq.bz2.snap.run.log \
-          2> &1  & sleep 5
+          2>&1 & sleep 5               
 done
 
 wait 

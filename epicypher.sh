@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 10:31:34"
+#Time-stamp: "2018-04-20 10:52:57"
 
 
 ############################################################
@@ -152,4 +152,4 @@ done
 awk -v mm=$MIS_MATCH '(NR>1 && $3-$5<=mm)' $log | awk '{count[$1]++} END {for (word in count) print word, count[word]}'
 
 ## rm tmp file
-[[ $KEEP_TMP != "true" && -e $fq ]] && rm $fq ${fa}.* 1> /dev/null 2>&1 # check before delele!!
+[[ $KEEP_TMP != "true" && -e $fq ]] && rm $fq ${fa} ${fa}.* 1> /dev/null 2>&1 # check before delele!!
