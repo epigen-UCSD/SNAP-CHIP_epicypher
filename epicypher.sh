@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 08:35:07"
+#Time-stamp: "2018-04-20 09:23:14"
 
 
 ############################################################
@@ -13,20 +13,40 @@
 # PART II usage info & parameters
 ############################################################
 
-usage(){
-    exit 1
+function usage(){
+    cat << EOF
+
+Usage: epicypher.sh [-i <chr>] [-b <chr>] [-k <true|false>] [-m <int>] [-o <dir>] [-v]
+
+Estimate spike in reads from SNAP-CHIP spikein
+
+Options:
+  [no option],             show this help message and exit
+  -i input file (fastq|fq|gz|bz2|fa|fasta)
+  -b barcode file in fasta format (default:K-MetStat_v1.0.fa)
+  -k keep tmp file 
+  -m number of mismatch allowed
+  -o output dir
+  -v show VERSION         
+
+EOF
 }
 
 
 # receiving arguments
-while getopts ":i:b:k:m:o:" opt;
+[[ $# -eq 0 ]] && usage &&exit
+
+while getopts ":i:b:k:m:o:v" opt;
 do
     case "$opt" in
         i) INPUT_FILE=$OPTARG;;  # input fastq file 
         b) BARCODE_FILE=$OPTARG;; # input barcodes fasta 
         k) KEEP_TMP=$OPTARG;; # keep db or not (default not)
         m) MIS_MATCH=$OPTARG;; # mismatch
-        o) OUT_DIR=$OPTARG;; #output dir 
+        o) OUT_DIR=$OPTARG;; #output dir
+        v) echo $(a=$(which epicypher.sh);cd ${a%/*};git describe --tags)
+           exit
+           ;;
         \?) usage
             echo "input error"
             exit 1
@@ -35,7 +55,6 @@ do
 done
 
 # set default 
-
 if [  -z "$KEEP_TMP" ]; then
     KEEP_TMP="false"
 fi
@@ -134,6 +153,3 @@ awk -v mm=$MIS_MATCH '(NR>1 && $3-$5<=mm)' $log | awk '{count[$1]++} END {for (w
 
 ## rm tmp file
 [[ $KEEP_TMP != "true" ]] && rm $fq ${fa}* 1> /dev/null 2>&1 
-
-
-
