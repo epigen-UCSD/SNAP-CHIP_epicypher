@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 01:31:22"
+#Time-stamp: "2018-04-20 01:38:32"
 
 
 ############################################################
@@ -26,6 +26,7 @@ do
         b) BARCODE_FILE=$OPTARG;; # input barcodes fasta 
         k) KEEP_TMP=$OPTARG;; # keep db or not (default not)
         m) MIS_MATCH=$OPTARG;; # mismatch
+        o) OUT_DIR=$OPTARG;; #output dir 
         \?) usage
             echo "input error"
             exit 1
@@ -47,11 +48,15 @@ if [  -z "$MIS_MATCH" ]; then
     MIS_MATCH=0
 fi
 
+if [  -z "$OUT_DIR" ]; then
+    OUT_DIR=$(pwd)/epicypher;
+fi
+
 (>&2 echo [log]INPUT_FILE: $INPUT_FILE)   
 (>&2 echo [log]BARCODE_FILE: $BARCODE_FILE)
 (>&2 echo [log]KEEP_TMP: $KEEP_TMP)
 (>&2 echo [log]MIS_MATCH: $MIS_MATCH)   
-
+(>&2 echo [log]OUT_DIR: $OUT_DIR)   
 
 ############################################################
 # PART III 
@@ -62,7 +67,7 @@ fname=$(basename $INPUT_FILE)
 id=${fname%%.${ext}} # bz2,fastq, fq, fasta, fa, gz
 id=${id%%.fastq} # bz2,fastq, fq, fasta, fa, gz
 dir=${INPUT_FILE%/*}
-work_dir=$(pwd)/epicypher; mkdir -p $work_dir 
+work_dir=$OUT_DIR; mkdir -p $work_dir 
 log=${work_dir}/${id}.log
 fq=${work_dir}/${id}.fastq
 fa=${work_dir}/${id}.fa; 
