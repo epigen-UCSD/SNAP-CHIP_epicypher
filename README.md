@@ -3,9 +3,8 @@
 
 ``` shell
 $epicypher.sh 
-```
 
-```
+
 Usage: epicypher.sh [-i <chr>] [-b <chr>] [-k <true|false>] [-m <int>] [-o <dir>] [-v]
 
 Estimate spike-in reads from SNAP-CHIP spikein
@@ -22,6 +21,7 @@ Options:
 
 ``` shell
 $epicypher.sh -v
+
 v0.0-3-g6daa209
 ```
 
