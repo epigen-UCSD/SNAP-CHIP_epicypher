@@ -1,0 +1,22 @@
+B029    WT      acgaacgtcgaacgcgcgatat  cgtcgaatcgttcgcgtaatcg
+B096    WT      acgaacgtcgaacgcgcgatat  cgcgactatcgcgcgtaacgcg
+B011    H3K4ac  acgaacgtcgaacgcgcgatat  atcgcgcgattcgcgtaatacg
+B021    H3K4ac  acgaacgtcgaacgcgcgatat  cgatcgtacgatagcgtaccga
+B077    H3K9ac  acgaacgtcgaacgcgcgatat  ccgcgcgtaatgcgcgacgtta
+B093    H3K9ac  acgaacgtcgaacgcgcgatat  cgccgattacgtgtcgcgcgta
+B008    H3K9bu  acgaacgtcgaacgcgcgatat  acgcgaatcgtcgacgcgtata
+B097    H3K9bu  acgaacgtcgaacgcgcgatat  cgcgatacgaccgcgttacgcg
+B022    H3K14ac  acgaacgtcgaacgcgcgatat  cgcgaaattcgtatacgcgtcg
+B017    H3K14ac  acgaacgtcgaacgcgcgatat  cgacgttaacgcgtttcgtacg
+B058    H3K18ac  acgaacgtcgaacgcgcgatat  ttcgcgcgtaacgacgtaccgt
+B038    H3K18ac  acgaacgtcgaacgcgcgatat  tagttcgcgacaccgttcgtcg
+B070    H3.2tetraAc (K4,9,14,18ac)      acgaacgtcgaacgcgcgatat  atcgtaccgcgcgtatcggtcg
+B056    H3.2tetraAc (K4,9,14,18ac)      acgaacgtcgaacgcgcgatat  ttatcgcgtcgcgacggacgta
+B081    H3K27ac     acgaacgtcgaacgcgcgatat                      cgacgagcgtatacgcgcgaca
+B079    H3K27ac     acgaacgtcgaacgcgcgatat                      ccgtacgtcgtgtcgaacgacg
+B033    H4K8ac      acgaacgtcgaacgcgcgatat                      gtcgcgaactatcgtcgattcg
+B041    H4K8ac      acgaacgtcgaacgcgcgatat                      tcgacgcgtaaacggtacgtcg
+B027    H4K16ac     acgaacgtcgaacgcgcgatat                      cgcgtcgattatcgcgacgtaa
+B025    H4K16ac     acgaacgtcgaacgcgcgatat                      cgcgatatcactcgacgcgata
+B089    H4tetraAc (K5,8,12,16)                                  acgaacgtcgaacgcgcgatat  cgatcgtcgcatcgccgaatcg
+B046    H4tetraAc (K5,8,12,16)                                  acgaacgtcgaacgcgcgatat  tcgcgtacgaaccgaatacgcg

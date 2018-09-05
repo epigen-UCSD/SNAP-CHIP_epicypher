@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Time-stamp: "2018-04-20 15:30:33"
+#Time-stamp: "2018-05-17 09:59:28"
 
 
 ############################################################
@@ -160,4 +160,4 @@ done
 
 
 ## rm tmp file
-[[ $KEEP_TMP != "true" && -e $fq ]] && rm -i $fq ${fa} ${fa}.* #1> /dev/null 2>&1 # check before delele!!
+[[ $KEEP_TMP != "true" && -e $fq ]] && rm  $fq ${fa} ${fa}.* #1> /dev/null 2>&1 # check before delele!!
